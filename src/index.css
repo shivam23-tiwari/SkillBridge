@@ -1,0 +1,510 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #F8F9FA;
+  --color-bg-secondary: #FFFFFF;
+  --color-bg-elevated: #F3F4F6;
+
+  --color-brand-primary: #FF2D95;
+  --color-brand-primary-hover: #E61980;
+  --color-brand-cerulean: #007BA7;
+  --color-brand-cerulean-light: #00A3E0;
+  --color-brand-rose: #FF2D95;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #6B7280;
+
+  --color-border-default: #E5E7EB;
+  --color-border-subtle: #F3F4F6;
+
+  --color-status-success: #10B981;
+  --color-status-warning: #F59E0B;
+  --color-status-error: #EF4444;
+  --color-status-verified: #00A3E0;
+}
+
+:root {
+  /* Minimalist Light Canvas (Default) */
+  --bg-primary: #F8F9FA;
+  --bg-secondary: #FFFFFF;
+  --bg-elevated: #F3F4F6;
+
+  /* Brand Accents */
+  --brand-primary: #FF2D95;
+  --brand-primary-hover: #E61980;
+  --brand-cerulean: #007BA7;
+  --brand-cerulean-light: #00A3E0;
+  --brand-rose: #FF2D95;
+
+  /* Typography */
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+
+  /* Borders */
+  --border-default: #E5E7EB;
+  --border-subtle: #F3F4F6;
+
+  /* Status */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --verified: #00A3E0;
+
+  --primary: var(--brand-primary);
+  --primary-hover: var(--brand-primary-hover);
+  --accent: var(--brand-cerulean-light);
+  --background: var(--bg-primary);
+  --card: var(--bg-secondary);
+  --text-main: var(--text-primary);
+  --border: var(--border-default);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-default);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    letter-spacing: -0.011em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+}
+
+/* =========================================================================
+   MINIMALIST LIGHT THEME (DEFAULT / ACTIVE)
+   Transforms dark utility classes into an airy, high-contrast, clean canvas.
+   ========================================================================= */
+html.theme-light,
+html:not(.theme-dark):not(.theme-warm) {
+  --bg-primary: #F8F9FA;
+  --bg-secondary: #FFFFFF;
+  --bg-elevated: #F3F4F6;
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --border-default: #E5E7EB;
+}
+
+html.theme-light .bg-\[\#0A0A0A\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#0A0A0A\] {
+  background-color: #F8F9FA !important;
+}
+
+html.theme-light .bg-\[\#0A0A0A\]\/95,
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#0A0A0A\]\/95 {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+}
+
+html.theme-light .bg-\[\#0A0A0A\]\/85,
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#0A0A0A\]\/85 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+html.theme-light .bg-\[\#121215\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#121215\],
+html.theme-light .bg-\[\#131724\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#131724\] {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.theme-light .bg-\[\#18181D\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#18181D\] {
+  background-color: #F3F4F6 !important;
+}
+
+html.theme-light .bg-\[\#16161B\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#16161B\] {
+  background-color: #F1F3F5 !important;
+}
+
+html.theme-light .bg-\[\#1C1C24\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#1C1C24\] {
+  background-color: #F3F4F6 !important;
+}
+
+html.theme-light .bg-\[\#0E0E11\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#0E0E11\] {
+  background-color: #F8F9FA !important;
+}
+
+html.theme-light .bg-\[\#15151A\],
+html:not(.theme-dark):not(.theme-warm) .bg-\[\#15151A\] {
+  background-color: #F9FAFB !important;
+}
+
+/* Borders in Minimalist Light */
+html.theme-light .border-\[\#202026\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#202026\],
+html.theme-light .border-\[\#2E2E38\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#2E2E38\],
+html.theme-light .border-\[\#26262F\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#26262F\],
+html.theme-light .border-\[\#262630\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#262630\],
+html.theme-light .border-\[\#24242E\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#24242E\],
+html.theme-light .border-\[\#292933\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#292933\],
+html.theme-light .border-\[\#18181F\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#18181F\],
+html.theme-light .border-\[\#242A3D\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#242A3D\],
+html.theme-light .border-\[\#202538\],
+html:not(.theme-dark):not(.theme-warm) .border-\[\#202538\] {
+  border-color: #E5E7EB !important;
+}
+
+/* Typography in Minimalist Light */
+html.theme-light .text-\[\#F3F4F6\],
+html:not(.theme-dark):not(.theme-warm) .text-\[\#F3F4F6\],
+html.theme-light .text-\[\#F1F3FA\],
+html:not(.theme-dark):not(.theme-warm) .text-\[\#F1F3FA\] {
+  color: #111827 !important;
+}
+
+html.theme-light .text-\[\#9CA3AF\],
+html:not(.theme-dark):not(.theme-warm) .text-\[\#9CA3AF\],
+html.theme-light .text-\[\#8E8E9A\],
+html:not(.theme-dark):not(.theme-warm) .text-\[\#8E8E9A\],
+html.theme-light .text-\[\#A0A8BD\],
+html:not(.theme-dark):not(.theme-warm) .text-\[\#A0A8BD\] {
+  color: #4B5563 !important;
+}
+
+html.theme-light .text-\[\#6B7280\],
+html:not(.theme-dark):not(.theme-warm) .text-\[\#6B7280\] {
+  color: #6B7280 !important;
+}
+
+/* Ring utilities */
+html.theme-light .ring-\[\#202026\],
+html:not(.theme-dark):not(.theme-warm) .ring-\[\#202026\] {
+  --tw-ring-color: #E5E7EB !important;
+}
+
+/* Hover utilities in Minimalist Light */
+html.theme-light .hover\:bg-\[\#18181D\]:hover,
+html:not(.theme-dark):not(.theme-warm) .hover\:bg-\[\#18181D\]:hover,
+html.theme-light .hover\:bg-\[\#16161B\]:hover,
+html:not(.theme-dark):not(.theme-warm) .hover\:bg-\[\#16161B\]:hover,
+html.theme-light .hover\:bg-\[\#121215\]:hover,
+html:not(.theme-dark):not(.theme-warm) .hover\:bg-\[\#121215\]:hover {
+  background-color: #F3F4F6 !important;
+}
+
+html.theme-light .hover\:text-\[\#F3F4F6\]:hover,
+html:not(.theme-dark):not(.theme-warm) .hover\:text-\[\#F3F4F6\]:hover {
+  color: #111827 !important;
+}
+
+html.theme-light a.hover\:text-white:hover,
+html:not(.theme-dark):not(.theme-warm) a.hover\:text-white:hover {
+  color: #000000 !important;
+}
+
+/* Placeholder colors */
+html.theme-light input::placeholder,
+html:not(.theme-dark):not(.theme-warm) input::placeholder,
+html.theme-light textarea::placeholder,
+html:not(.theme-dark):not(.theme-warm) textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* =========================================================================
+   WARM MINIMALIST (PAPER / EDITORIAL CLEAN)
+   ========================================================================= */
+html.theme-warm {
+  --bg-primary: #FAF9F6;
+  --bg-secondary: #FFFFFF;
+  --bg-elevated: #F5F3EF;
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --border-default: #E7E5E4;
+}
+
+html.theme-warm .bg-\[\#0A0A0A\] {
+  background-color: #FAF9F6 !important;
+}
+
+html.theme-warm .bg-\[\#0A0A0A\]\/95 {
+  background-color: rgba(250, 249, 246, 0.95) !important;
+}
+
+html.theme-warm .bg-\[\#121215\] {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+html.theme-warm .bg-\[\#18181D\] {
+  background-color: #F5F3EF !important;
+}
+
+html.theme-warm .bg-\[\#16161B\] {
+  background-color: #F3F0EA !important;
+}
+
+html.theme-warm .bg-\[\#1C1C24\] {
+  background-color: #F5F3EF !important;
+}
+
+html.theme-warm .bg-\[\#0E0E11\] {
+  background-color: #FAF9F6 !important;
+}
+
+html.theme-warm .border-\[\#202026\],
+html.theme-warm .border-\[\#2E2E38\],
+html.theme-warm .border-\[\#26262F\],
+html.theme-warm .border-\[\#262630\],
+html.theme-warm .border-\[\#24242E\],
+html.theme-warm .border-\[\#292933\],
+html.theme-warm .border-\[\#18181F\] {
+  border-color: #E7E5E4 !important;
+}
+
+html.theme-warm .text-\[\#F3F4F6\],
+html.theme-warm .text-\[\#F1F3FA\] {
+  color: #1C1917 !important;
+}
+
+html.theme-warm .text-\[\#9CA3AF\],
+html.theme-warm .text-\[\#8E8E9A\] {
+  color: #57534E !important;
+}
+
+html.theme-warm .hover\:bg-\[\#18181D\]:hover,
+html.theme-warm .hover\:bg-\[\#16161B\]:hover,
+html.theme-warm .hover\:bg-\[\#121215\]:hover {
+  background-color: #F5F3EF !important;
+}
+
+html.theme-warm .hover\:text-\[\#F3F4F6\]:hover {
+  color: #1C1917 !important;
+}
+
+/* =========================================================================
+   DARK THEME (FALLBACK ONLY IF TOGGLED EXPLICITLY)
+   ========================================================================= */
+html.theme-dark {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #121215;
+  --bg-elevated: #18181D;
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --border-default: #202026;
+}
+
+/* =========================================================================
+   SHARED MINIMALIST PRIMITIVES
+   ========================================================================= */
+.minimal-panel,
+.glass-panel {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+}
+
+.minimal-panel-elevated,
+.glass-panel-elevated {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+}
+
+.minimal-card,
+.glass-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.minimal-input,
+.glass-input {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  transition: border-color 0.15s ease;
+}
+
+.minimal-input:focus,
+.glass-input:focus {
+  border-color: #007BA7;
+  outline: none;
+}
+
+.minimal-btn-primary,
+.glass-btn-primary {
+  background-color: #FF2D95;
+  color: #FFFFFF !important;
+  border: 1px solid #FF4DA8;
+  font-weight: 600;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.minimal-btn-primary:hover,
+.glass-btn-primary:hover {
+  background-color: #E61980;
+  border-color: #FF2D95;
+}
+
+.minimal-btn-secondary,
+.glass-btn-secondary {
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  font-weight: 500;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Tabular Numerals for metrics, budgets, and counts */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom sleek minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html.theme-light ::-webkit-scrollbar-track,
+html:not(.theme-dark):not(.theme-warm) ::-webkit-scrollbar-track {
+  background: #F8F9FA;
+}
+
+html.theme-light ::-webkit-scrollbar-thumb,
+html:not(.theme-dark):not(.theme-warm) ::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+html.theme-dark ::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+html.theme-dark ::-webkit-scrollbar-thumb {
+  background: #202026;
+  border-radius: 3px;
+}
+
+/* ================= RESUME PAGE FONT & PRINT STYLESHEET ================= */
+.resume-page,
+.resume-page * {
+  font-family: inherit !important;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media screen {
+  #resume-print-root {
+    position: fixed !important;
+    left: -10000px !important;
+    top: 0 !important;
+    width: 794px !important;
+    min-height: 1123px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -9999 !important;
+    overflow: visible !important;
+  }
+}
+
+@media print {
+  html,
+  body {
+    width: 210mm !important;
+    min-height: 297mm !important;
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+  }
+
+  /* Hide everything except the print root containing the .resume-page element */
+  body > *:not(#resume-print-root) {
+    display: none !important;
+  }
+
+  /* Dedicated print-only view rendered from the exact same React ResumePreview component */
+  #resume-print-root {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .resume-page,
+  #resume-print-root .resume-page,
+  #resume-print-root .resume-a4-sheet,
+  #printable-resume {
+    position: relative !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    min-height: 297mm !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    margin: 0 !important;
+    background: #FFFFFF !important;
+    color: #111827 !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .resume-page .print\:hidden,
+  #resume-print-root .print\:hidden,
+  #printable-resume .print\:hidden {
+    display: none !important;
+  }
+
+  .resume-page h2,
+  .resume-page h3,
+  #resume-print-root h2,
+  #resume-print-root h3 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .resume-page .resume-entry,
+  .resume-page .page-break-inside-avoid,
+  #resume-print-root .resume-entry,
+  #resume-print-root .page-break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .resume-page a,
+  #resume-print-root a {
+    text-decoration: underline !important;
+  }
+}
+
+

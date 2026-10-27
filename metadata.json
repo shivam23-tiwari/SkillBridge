@@ -1,0 +1,6 @@
+{
+  "name": "SkillBridge",
+  "description": "Where student talent meets real opportunities. Freelance marketplace and project showcase for university creators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
