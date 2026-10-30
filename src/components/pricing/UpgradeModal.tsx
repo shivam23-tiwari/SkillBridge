@@ -39,7 +39,7 @@ export const UpgradeModal: React.FC = () => {
             </h2>
             <p className="text-sm text-gray-400 max-w-xl">
               {upgradeFeaturePrompt ||
-                `Resume builder is free for 3 downloads/sends. You currently have ${freeUsesRemaining} free use left. Upgrade for watermark-free downloads and ATS tools.`}
+                `Resume creation is 100% free with 10 free watermark-free PDF downloads. You currently have ${freeUsesRemaining} of 10 free downloads left. Upgrade for unlimited downloads and ATS tools.`}
             </p>
           </div>
           <button
@@ -226,7 +226,7 @@ export const UpgradeModal: React.FC = () => {
             onClick={closeUpgradeModal}
             className="text-gray-400 hover:text-white underline underline-offset-2"
           >
-            Continue with Free Plan (with watermark)
+            Continue with Free Plan (No Watermark)
           </button>
         </div>
       </div>

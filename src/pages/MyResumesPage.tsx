@@ -44,18 +44,7 @@ export const MyResumesPage: React.FC = () => {
     loadResumes();
   }, [user?.id]);
 
-  const maxResumesAllowed = plan === 'free' ? 1 : plan === 'basic' ? 3 : 999;
-  const canCreateNew = resumes.length < maxResumesAllowed;
-
   const handleCreateNew = () => {
-    if (!canCreateNew) {
-      openUpgradeModal(
-        `${plan.toUpperCase()} Plan allows up to ${maxResumesAllowed} saved resume${
-          maxResumesAllowed > 1 ? 's' : ''
-        }. Upgrade to create more!`
-      );
-      return;
-    }
     navigate('/resume-builder');
   };
 
@@ -115,11 +104,11 @@ export const MyResumesPage: React.FC = () => {
             Manage your resumes, track views, share public links, and download ATS-ready PDFs.
           </p>
           {plan === 'free' && (
-            <div className="flex items-center gap-2 text-xs text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-lg w-fit">
-              <span>Free uses remaining: <strong>{freeUsesRemaining} / 3</strong></span>
+            <div className="flex items-center gap-2 text-xs text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-lg w-fit">
+              <span>Free PDF downloads remaining: <strong>{freeUsesRemaining} / 10</strong> (No Watermark)</span>
               <span className="text-gray-500">•</span>
-              <Link to="/pricing" className="underline font-semibold hover:text-amber-200">
-                Upgrade to remove limits
+              <Link to="/pricing" className="underline font-semibold hover:text-emerald-200">
+                Upgrade for unlimited downloads
               </Link>
             </div>
           )}

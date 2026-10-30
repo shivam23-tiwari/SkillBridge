@@ -360,26 +360,7 @@ export const ResumeSheet: React.FC<ResumeSheetProps> = ({
           </div>
         ))}
 
-      {/* Faint Diagonal Watermark for Free Plan Only (inside both preview and print view) */}
-      {isWatermarkRequired && (
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none select-none z-10 overflow-hidden"
-        >
-          <div className="w-full h-full flex flex-col justify-around opacity-[0.06] rotate-[-30deg] scale-150">
-            {[...Array(10)].map((_, i) => (
-              <div
-                key={i}
-                className="whitespace-nowrap text-gray-950 font-black text-2xl tracking-[0.25em] uppercase text-center"
-              >
-                SKILLBRIDGE FREE STUDENT PLAN • UPGRADE TO REMOVE WATERMARK
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Single Source of Truth Template Content */}
+      {/* Single Source of Truth Template Content (Watermark-Free) */}
       <div className="relative z-20">
         {formatting.template === 'minimal-classic' ? (
           <MinimalClassicView data={data} accentColor={accentColor} spacing={spacing} />

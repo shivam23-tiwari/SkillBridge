@@ -57,24 +57,23 @@ export const PlanProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [user?.id]);
 
   const plan = subscription.plan;
-  const freeUsesRemaining = plan === 'free' ? (subscription.freeUsesRemaining ?? 3) : 999;
+  const freeUsesRemaining = plan === 'free' ? (subscription.freeUsesRemaining ?? 10) : 999;
   const aiUsesRemaining =
     plan === 'premium'
       ? 9999
       : plan === 'basic'
       ? (subscription.aiUsesRemaining ?? 5)
-      : (subscription.freeUsesRemaining ?? 3);
+      : (subscription.freeUsesRemaining ?? 10);
 
-  const isWatermarkRequired = plan === 'free';
+  // Resumes are always 100% watermark-free on both preview and PDF download
+  const isWatermarkRequired = false;
   const canExportDocx = plan !== 'free';
   const canUseFullATS = plan === 'premium';
   const canUseCustomSlug = plan === 'premium';
   const canBuildCoverLetter = plan === 'premium';
 
-  const canAccessTemplate = (templateId: string): boolean => {
-    if (plan === 'premium' || plan === 'basic') return true;
-    // Free plan has 2 simple templates
-    return templateId === 'modern-tech' || templateId === 'minimal-classic';
+  const canAccessTemplate = (_templateId: string): boolean => {
+    return true;
   };
 
   const openUpgradeModal = (featureName = 'this feature') => {
@@ -98,12 +97,12 @@ export const PlanProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsCheckoutModalOpen(false);
   };
 
-  const consumeFreeUse = (actionName = 'PDF download / action'): boolean => {
+  const consumeFreeUse = (actionName = 'PDF download'): boolean => {
     if (plan !== 'free') return true;
 
-    const remaining = subscription.freeUsesRemaining ?? 3;
+    const remaining = subscription.freeUsesRemaining ?? 10;
     if (remaining <= 0) {
-      openUpgradeModal(`You have used all 3 free ${actionName} credits. Upgrade to Basic (₹99) or Premium for unlimited access!`);
+      openUpgradeModal(`You have used all 10 free ${actionName}s. Upgrade to Basic (₹99) or Premium for unlimited downloads!`);
       return false;
     }
 
@@ -111,36 +110,15 @@ export const PlanProvider: React.FC<{ children: React.ReactNode }> = ({ children
     refreshSubscription();
 
     if (nextCount > 0) {
-      showToast(`1 free use used. You have ${nextCount} free use${nextCount === 1 ? '' : 's'} remaining.`, 'info');
+      showToast(`1 free download used. You have ${nextCount} of 10 free download${nextCount === 1 ? '' : 's'} remaining.`, 'info');
     } else {
-      showToast(`This was your last free use! Upgrade to Basic or Premium to keep downloading & sharing.`, 'warning');
+      showToast(`You have used your 10th free download! Upgrade to Basic (₹99) or Premium for unlimited downloads.`, 'warning');
     }
 
     return true;
   };
 
   const consumeAiUse = (): boolean => {
-    if (plan === 'premium') return true;
-
-    if (plan === 'basic') {
-      const remaining = subscription.aiUsesRemaining ?? 5;
-      if (remaining <= 0) {
-        openUpgradeModal('You have exhausted your 5 Basic AI summary credits. Upgrade to Premium for unlimited AI suggestions!');
-        return false;
-      }
-      DataService.decrementAiUse();
-      refreshSubscription();
-      return true;
-    }
-
-    // Free plan: counts towards the 3 free uses or prompts upgrade
-    const remaining = subscription.freeUsesRemaining ?? 3;
-    if (remaining <= 0) {
-      openUpgradeModal('AI Suggestion requires an active plan or free use credits. Upgrade now!');
-      return false;
-    }
-    DataService.decrementFreeUse();
-    refreshSubscription();
     return true;
   };
 

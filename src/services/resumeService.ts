@@ -621,21 +621,6 @@ async function generatePdfBlobFromResumeDom(
     }
   }
 
-  // 5. Diagonal Watermark for Free Plan Only
-  if (isWatermarkRequired) {
-    const totalPages = doc.getNumberOfPages();
-    for (let p = 1; p <= totalPages; p++) {
-      doc.setPage(p);
-      doc.setFont(pdfFontName, 'bold');
-      doc.setFontSize(34);
-      doc.setTextColor(232, 235, 240);
-      doc.text('BUILT WITH SKILLBRIDGE', 105, 160, {
-        align: 'center',
-        angle: 32,
-      });
-    }
-  }
-
   return doc.output('blob');
 }
 

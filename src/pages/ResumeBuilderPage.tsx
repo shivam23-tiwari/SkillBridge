@@ -502,13 +502,13 @@ export const ResumeBuilderPage: React.FC = () => {
     if (currentStep > 1) setCurrentStep(prev => prev - 1);
   };
 
-  // Primary Download PDF action: immediately downloads <FullName>_Resume.pdf to the user's computer
-  // from the live <ResumeSheet /> component and opens the Save/Export modal.
+  // Primary Download PDF action: checks the 10 free downloads limit, then downloads <FullName>_Resume.pdf
+  // without any watermark to the user's computer and opens the Save/Export modal.
   const handleDownloadPDF = async () => {
-    setShowDownloadModal(true);
     const allowed = consumeFreeUse('PDF download');
     if (!allowed) return;
 
+    setShowDownloadModal(true);
     const fullName = (resumeData.personal.fullName || 'Resume').trim();
     const safeFileName = `${fullName.replace(/[^a-zA-Z0-9_-]+/g, '_')}_Resume`;
     document.title = safeFileName;
@@ -517,12 +517,12 @@ export const ResumeBuilderPage: React.FC = () => {
       await ResumeService.downloadPdfToPc(
         resumeData,
         fullName,
-        isWatermarkRequired,
+        false,
         false
       );
       showToast(
         'Resume PDF Downloaded',
-        `${safeFileName}.pdf has been downloaded to your computer.`
+        `${safeFileName}.pdf has been downloaded to your computer (Watermark-Free).`
       );
     } catch (err) {
       console.error('PDF download error:', err);
@@ -599,13 +599,13 @@ ${resumeData.experience.map(exp => `* ${exp.role} @ ${exp.company} (${exp.durati
             </h1>
             {/* Plan Tier Badge */}
             {plan === 'free' ? (
-              <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 font-semibold border border-amber-500/20">
-                Free Plan: {freeUsesRemaining} of 3 free uses left
+              <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 font-semibold border border-emerald-500/20">
+                Free Plan: {freeUsesRemaining} of 10 free downloads left (No Watermark)
               </span>
             ) : (
               <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 font-semibold border border-blue-500/20 flex items-center gap-1">
                 <Crown className="w-3 h-3 text-amber-400" />
-                {plan.toUpperCase()} Plan (Watermark-Free)
+                {plan.toUpperCase()} Plan (Unlimited Downloads)
               </span>
             )}
           </div>
@@ -2024,7 +2024,7 @@ ${resumeData.experience.map(exp => `* ${exp.role} @ ${exp.company} (${exp.durati
               <ResumePreview
                 data={resumeData}
                 scale={previewScale}
-                isWatermarkRequired={isWatermarkRequired}
+                isWatermarkRequired={false}
                 onPageCountChange={pages => setTotalPages(pages)}
               />
             </div>

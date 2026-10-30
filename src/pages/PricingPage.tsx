@@ -81,22 +81,22 @@ export const PricingPage: React.FC = () => {
                 <span className="text-xs text-gray-400">/ forever</span>
               </div>
               <p className="text-xs text-gray-400 mt-2">
-                Create your first resume. Free for up to 3 downloads or sends.
+                Create &amp; edit resumes freely for unlimited time. Includes 10 free watermark-free PDF downloads.
               </p>
             </div>
 
             <div className="border-t border-gray-800/80 pt-5 space-y-3 text-xs text-gray-300">
               <div className="flex items-center gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong>1 Resume</strong> saved to account</span>
+                <span><strong>Unlimited</strong> resume creation &amp; editing</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong>2 Simple Templates</strong> (Tech & Classic)</span>
+                <span><strong>All Templates</strong> unlocked for free</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>PDF Download (with SkillBridge watermark)</span>
+                <span><strong>10 Free PDF Downloads</strong> (No Watermark)</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -104,7 +104,7 @@ export const PricingPage: React.FC = () => {
               </div>
               <div className="flex items-center gap-2.5">
                 <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong>3 Email sends</strong> / job applications</span>
+                <span><strong>10 Free</strong> email sends / job applications</span>
               </div>
               <div className="flex items-center gap-2.5 text-gray-500">
                 <X className="w-4 h-4 text-gray-600 shrink-0" />
@@ -305,22 +305,22 @@ export const PricingPage: React.FC = () => {
           </thead>
           <tbody className="divide-y divide-gray-800/60">
             <tr>
-              <td className="py-3.5 font-medium text-gray-200">Resume count</td>
-              <td className="py-3.5 text-center text-gray-400">1</td>
-              <td className="py-3.5 text-center font-semibold text-white">3</td>
+              <td className="py-3.5 font-medium text-gray-200">Resume creation</td>
+              <td className="py-3.5 text-center text-emerald-400 font-semibold">Unlimited (Free)</td>
+              <td className="py-3.5 text-center font-semibold text-white">Unlimited</td>
               <td className="py-3.5 text-center font-bold text-indigo-400">Unlimited</td>
             </tr>
             <tr>
               <td className="py-3.5 font-medium text-gray-200">Templates</td>
-              <td className="py-3.5 text-center text-gray-400">2 simple</td>
+              <td className="py-3.5 text-center text-emerald-400">All included</td>
               <td className="py-3.5 text-center font-semibold text-white">10</td>
               <td className="py-3.5 text-center font-bold text-indigo-400">30+ (Creative & ATS)</td>
             </tr>
             <tr>
               <td className="py-3.5 font-medium text-gray-200">PDF download</td>
-              <td className="py-3.5 text-center text-amber-400/90">Yes, with watermark</td>
-              <td className="py-3.5 text-center font-semibold text-emerald-400">No watermark</td>
-              <td className="py-3.5 text-center font-bold text-emerald-400">No watermark</td>
+              <td className="py-3.5 text-center text-emerald-400 font-semibold">10 Free (No watermark)</td>
+              <td className="py-3.5 text-center font-semibold text-emerald-400">Unlimited (No watermark)</td>
+              <td className="py-3.5 text-center font-bold text-emerald-400">Unlimited (No watermark)</td>
             </tr>
             <tr>
               <td className="py-3.5 font-medium text-gray-200">Word (.docx) download</td>

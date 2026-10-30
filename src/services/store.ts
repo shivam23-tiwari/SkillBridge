@@ -1514,32 +1514,45 @@ export const DataService = {
       billing: 'one-time',
       status: 'active',
       startDate: new Date().toISOString(),
-      freeUsesRemaining: 3, // Rule: Resume builder is free 3 times before upgrade is required
-      aiUsesRemaining: 0,
+      freeUsesRemaining: 10, // Rule: Resume builder is free for 10 downloads without watermark before upgrade is required
+      aiUsesRemaining: 5,
       sendsCount: 0,
     };
 
-    const stored = getStored<UserSubscription>(STORAGE_KEYS.SUBSCRIPTION, defaultSub);
-    // Ensure freeUsesRemaining is preserved or initialized
+    const stored = getStored<UserSubscription & { migratedTo10FreeDownloads?: boolean }>(
+      STORAGE_KEYS.SUBSCRIPTION,
+      defaultSub
+    );
+    // Migrate existing free users from old 3-use limit to 10 free downloads
+    if (!stored.migratedTo10FreeDownloads) {
+      if (stored.plan === 'free') {
+        stored.freeUsesRemaining = 10;
+      }
+      stored.migratedTo10FreeDownloads = true;
+      setStored(STORAGE_KEYS.SUBSCRIPTION, stored);
+    }
     if (typeof stored.freeUsesRemaining !== 'number') {
-      stored.freeUsesRemaining = 3;
+      stored.freeUsesRemaining = 10;
     }
     return stored;
   },
 
   saveSubscription(subscription: UserSubscription): void {
-    setStored(STORAGE_KEYS.SUBSCRIPTION, subscription);
+    setStored(STORAGE_KEYS.SUBSCRIPTION, {
+      ...subscription,
+      migratedTo10FreeDownloads: true,
+    });
   },
 
   getFreeUsesRemaining(): number {
     const sub = this.getSubscription();
-    return sub.freeUsesRemaining ?? 3;
+    return sub.freeUsesRemaining ?? 10;
   },
 
   decrementFreeUse(): number {
     const sub = this.getSubscription();
     if (sub.plan === 'free') {
-      const remaining = Math.max(0, (sub.freeUsesRemaining ?? 3) - 1);
+      const remaining = Math.max(0, (sub.freeUsesRemaining ?? 10) - 1);
       sub.freeUsesRemaining = remaining;
       this.saveSubscription(sub);
       return remaining;

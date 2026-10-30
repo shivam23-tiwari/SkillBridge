@@ -68,7 +68,7 @@ export const DownloadResumeModal: React.FC<DownloadResumeModalProps> = ({
       const result = await ResumeService.downloadPdfToPc(
         resumeData,
         cleanBase,
-        isWatermarkRequired,
+        false,
         useFolderPicker
       );
 
@@ -108,7 +108,7 @@ export const DownloadResumeModal: React.FC<DownloadResumeModalProps> = ({
       'Print / Save as PDF',
       'Choose Save as PDF, Margins: None, turn on Background graphics, turn off Headers and footers.'
     );
-    await ResumeService.openPrintDialog(candidateName, resumeData, isWatermarkRequired);
+    await ResumeService.openPrintDialog(candidateName, resumeData, false);
     onDownloaded?.();
     setTimeout(() => {
       setDownloadingFormat(null);
